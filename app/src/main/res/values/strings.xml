@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Paises</string>
+    <string name="btn_listar">Listar Paises</string>
+    <string-array name="continentes_array">
+        <item>Todos</item>
+        <item>Africa</item>
+        <item>Americas</item>
+        <item>Asia</item>
+        <item>Europe</item>
+        <item>Oceania</item>
+    </string-array>
+</resources>
