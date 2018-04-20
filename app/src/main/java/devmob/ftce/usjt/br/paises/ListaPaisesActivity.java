@@ -16,9 +16,8 @@ import java.util.ArrayList;
 public class ListaPaisesActivity extends Activity {
     public static final String PAIS = "br.usjt.desmob.paises.pais";
 
-    private ArrayList<Pais> lista;
-    private Activity activity;
-    private ArrayList<String> nomes;
+    Activity activity;
+    Pais[] paises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +25,16 @@ public class ListaPaisesActivity extends Activity {
         setContentView(R.layout.activity_lista_paises);
         activity = this;
         Intent intent = getIntent();
-        String continente = intent.getStringExtra(MainActivity.NOME);
-        lista = Data.listarPaises(continente);
-        nomes = Data.listarNomes(lista);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, nomes);
-
+        paises = (Pais[]) intent.getSerializableExtra(MainActivity.PAISES);
         ListView listView = findViewById(R.id.lista_paises);
+        PaisAdapter adapter = new PaisAdapter(paises, this);
         listView.setAdapter(adapter);
+		
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent1 = new Intent(activity, DadosPaisActivity.class);
-                intent1.putExtra(PAIS, lista.get(position));
+                intent1.putExtra(PAIS, paises[position]);
                 startActivity(intent1);
             }
         });

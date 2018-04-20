@@ -16,7 +16,6 @@ public class DadosPaisActivity extends Activity {
         setContentView(R.layout.activity_dados_pais);
         TextView textView = findViewById(R.id.dados_pais);
         Intent intent = getIntent();
-        //textView.setText((CharSequence) intent.getSerializableExtra(ListaPaisesActivity.PAIS.toString()));
         Pais pais = (Pais)intent.getSerializableExtra(ListaPaisesActivity.PAIS);
         textView.setText(pais.toString());
     }
